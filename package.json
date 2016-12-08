@@ -1,0 +1,22 @@
+{
+  "name": "engagement-letter-application",
+  "version": "1.0.0",
+  "description": "The site is designed to lawyers and admins to sign up for the service, upload their form, configure the variable fields and the order of those fields.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Engagement-Letter-Application/Engagement-Letter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Engagement-Letter-Application/Engagement-Letter/issues"
+  },
+  "homepage": "https://github.com/Engagement-Letter-Application/Engagement-Letter#readme"
+}
