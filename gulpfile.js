@@ -4,12 +4,15 @@ const mocha = require('mocha');
 const webpack = require('webpack-stream');
 
 var appFiles = ['*.js'];
-var testFiles = ['./test/**/*.js'];
+var testFiles = [
+  './test//back_end/server_test.js', './test/back_end/test_setup.js',
+  './test/back_end/test_teardown.js'
+];
 
-// gulp.task('test:mocha', () => {
-//   return gulp.src(testFiles)
-//   .pipe(mocha());
-// });
+gulp.task('test:mocha', () => {
+  return gulp.src(testFiles)
+  .pipe(mocha());
+});
 
 gulp.task('webpack:dev', () => {
   gulp.src('app/js/entry.js')
@@ -28,13 +31,13 @@ gulp.task('webpack:dev', () => {
 //     .pipe(eslint.format());
 // });
 
-gulp.task('lint:appFiles', () => {
-  return gulp.src(appFiles)
-    .pipe(eslint())
-    .pipe(eslint.format());
-});
+// gulp.task('lint:appFiles', () => {
+//   return gulp.src(appFiles)
+//     .pipe(eslint())
+//     .pipe(eslint.format());
+// });
 
 gulp.task('test', ['test:mocha']);
-gulp.task('lint', ['lint:testFiles']);
+// gulp.task('lint', ['lint:testFiles']);
 
-gulp.task('default', ['lint', 'test']);
+gulp.task('default', ['test']);
