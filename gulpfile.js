@@ -1,12 +1,12 @@
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
+// const eslint = require('gulp-eslint');
 const mocha = require('mocha');
 const webpack = require('webpack-stream');
 
-var appFiles = ['*.js'];
+// var appFiles = ['*.js'];
 var testFiles = [
   './test//back_end/server_test.js', './test/back_end/test_setup.js',
-  './test/back_end/test_teardown.js'
+  './test/back_end/test_teardown.js',
 ];
 
 gulp.task('test:mocha', () => {
@@ -19,8 +19,8 @@ gulp.task('webpack:dev', () => {
     .pipe(webpack({
       devtool: 'source-map',
       output: {
-        filename: 'bundle.js'
-      }
+        filename: 'bundle.js',
+      },
     }))
     .pipe(gulp.dest('./build'));
 });
