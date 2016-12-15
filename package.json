@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/Engagement-Letter-Application/Engagement-Letter#readme",
   "dependencies": {
+    "bcrypt": "^1.0.1",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.2",
     "superagent": "^3.2.1"
   },
