@@ -12,6 +12,11 @@ function routerConfig($stateProvider, $urlRouterProvider){
       url: '/home',
       template: require('../view/landing/landing.html'),
     },
+    {
+      name: 'signup',
+      url: '/signup',
+      template: require('../view/signup/singup.html'),
+    },
     // {
     //   name: 'login',
     //   url: '/login',
