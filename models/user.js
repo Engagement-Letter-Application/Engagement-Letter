@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const Promise = require('bluebird');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
-// const debug = require('debug')('abba:user');
+const debug = require('debug')('EngagementLetter:user');
 const Schema = mongoose.Schema;
 
 const userSchema = Schema({
@@ -18,7 +18,7 @@ const userSchema = Schema({
 mongoose.Promise = global.Promise;
 
 userSchema.methods.generatePasswordHash = function(password){
-  // debug('generatePasswordHash');
+  debug('generatePasswordHash');
   return new Promise((resolve, reject) => {
     bcrypt.hash(password, 10, (err, hash) => {
       // return 400 error if bcrypt rejects user info
@@ -31,7 +31,7 @@ userSchema.methods.generatePasswordHash = function(password){
 
 // for signin - compare plaintext pw against stored hash
 userSchema.methods.comparePasswordHash = function(password){
-  // debug('comparePasswordHash');
+  debug('comparePasswordHash');
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, this.password, (err, valid) => {
       if (err) return reject(err); // 500 error
@@ -44,7 +44,7 @@ userSchema.methods.comparePasswordHash = function(password){
 
 // for signup & signin: first create a secure hash (using generateFindHash/crypto) then use it to create temporary token using app secret
 userSchema.methods.generateToken = function(){
-  // debug('generateToken');
+  debug('generateToken');
   return new Promise((resolve, reject) => {
     this.generateFindHash()
     .then(findHash => resolve(jwt.sign({token: findHash}, process.env.APP_SECRET)))
@@ -54,7 +54,7 @@ userSchema.methods.generateToken = function(){
 
 //
 userSchema.methods.generateFindHash = function(){
-  // debug('generateFindHash');
+  debug('generateFindHash');
   return new Promise((resolve, reject) => {
     let tries = 0;
     _generateFindHash.call(this);
