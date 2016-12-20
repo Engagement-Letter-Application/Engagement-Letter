@@ -1,49 +1,30 @@
 'use strict';
 
-module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
+const angular = require('angular');
+const engagementApp = angular.module('engagementApp', [require('angular-route')]);
 
-function routerConfig($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.when('' , '/landing');
-  $urlRouterProvider.when('/' , '/landing');
+require('./components')(engagementApp);
+require('./view')(engagementApp);
+require('./services')(engagementApp);
 
-  let routes = [
-    {
-      name: 'landing',
-      url: '/home',
-      template: require('../view/landing/landing.html'),
-    },
-    {
-      name: 'signup',
-      url: '/signup',
-      template: require('../view/signup/singup.html'),
-    },
-    {
-      name: 'login',
-      url: '/login',
-      controllerAs: 'loginCtrl',
-      controller: 'LoginController',
-      template: require('../component/login/login.html'),
-    },
-    {
-      name: 'dashboard',
-      url: '/dashboard',
-      controllerAs: 'dashboardCtrl',
+engagementApp.config(['$routeProvider', function($routing) {
+  $routing
+
+    .when('/', {
+      templateUrl: '/views/landing/landing.html',
+      controller: 'LandingController',
+      controllerAs: 'landingCtrl'
+    })
+    .when('/dashboard', {
+      templateUrl: '/views/dashboard.html',
       controller: 'DashboardController',
-      template: require('../dashboard/dashboard.html'),
-    },
-    {
-      name: 'about',
-      url: '/about',
-      template: require('../view/about/about.html'),
-    },
-    {
-      name: 'contact',
-      url: '/contact',
-      template: require('../view/contact/contact.html'),
-    },
-  ];
-
-  states.forEach(state => {
-    $stateProvider.state(state);
-  });
-}
+      controllerAs: 'dashCtrl'
+    })
+    .when('/auth', {
+      templateUrl: '/views/auth/auth.html',
+      controller: 'AuthController',
+      controllerAs: 'authCtrl'
+    .otherwise({
+      redirectTo: '/'
+    });
+}]);
