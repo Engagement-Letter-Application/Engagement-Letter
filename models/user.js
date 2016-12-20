@@ -15,6 +15,8 @@ const userSchema = Schema({
   findHash: {type: String, unique: true},
 });
 
+mongoose.Promise = global.Promise;
+
 userSchema.methods.generatePasswordHash = function(password){
   // debug('generatePasswordHash');
   return new Promise((resolve, reject) => {
