@@ -44,6 +44,7 @@ userSchema.methods.comparePasswordHash = function(password){
 
 // for signup & signin: first create a secure hash (using generateFindHash/crypto) then use it to create temporary token using app secret
 userSchema.methods.generateToken = function(){
+  console.log('Im in passwordhash');
   debug('generateToken');
   return new Promise((resolve, reject) => {
     this.generateFindHash()
