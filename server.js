@@ -1,16 +1,3 @@
-// const express = require('express');
-// const app = express();
-// const PORT = process.env.PORT || 3000;
-// const authRouter = require(`${__dirname}/routes/auth_router.js`);
-//
-// app.use('/api', authRouter);
-//
-// module.exports = app.listen(PORT, () => console.log('server up on port:' + PORT));
-
-
-
-
-
 'use strict';
 
 // npm modules
@@ -26,6 +13,7 @@ const debug = require('debug')('abba:server');
 
 // app modules
 const authRouter = require('./routes/auth_router.js');
+const dashboardRouter = require('./routes/dashboard_router.js');
 const errorMiddleware = require('./lib/error-middleware.js');
 
 // load environment vars
@@ -40,9 +28,10 @@ const PORT = process.env.PORT;
 const app = express();
 
 // app routes
-app.use(express.static(`${__dirname}/build`));
+// app.use(express.static(`${__dirname}/build`));
 app.use(bodyParser);
 app.use(authRouter);
+app.use(dashboardRouter);
 
 // app middleware
 app.use(cors());

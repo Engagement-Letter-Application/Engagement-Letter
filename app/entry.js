@@ -28,21 +28,24 @@ engagementApp.config(['$routeProvider', function($routing) {
   $routing
 
     .when('/', {
-      templateUrl: '/views/landing/landing.html',
+      name: 'landing',
+      url: '/landing',
+      template: require('../view/landing/landing.html'),
       controller: 'LandingController',
-      controllerAs: 'landingCtrl'
+      // controllerAs: 'landingCtrl',
     })
     .when('/dashboard', {
-      templateUrl: '/views/dashboard.html',
+      templateUrl: '/view/dashboard.html',
       controller: 'DashboardController',
-      controllerAs: 'dashCtrl'
+      controllerAs: 'dashCtrl',
     })
     .when('/auth', {
-      templateUrl: '/views/auth/auth.html',
+      templateUrl: '/view/auth/auth.html',
       controller: 'AuthController',
-      controllerAs: 'authCtrl'
+      controllerAs: 'authCtrl',
+    })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/',
     });
 }]);
 
