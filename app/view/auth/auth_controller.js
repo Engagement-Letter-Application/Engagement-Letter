@@ -1,6 +1,6 @@
 'use strict';
 
-require('./_login.scss');
+// require('./_login.scss');
 
 module.exports = ['$log', '$rootScope', '$location', 'authService',  LoginController ];
 
@@ -17,4 +17,5 @@ function LoginController($log, $rootScope, $location, authService){
     .then(() => {
       $location.path('/dashboard');
     });
-  }
+  };
+};
