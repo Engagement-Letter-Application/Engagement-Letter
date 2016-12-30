@@ -18,7 +18,7 @@ const uiRouter = require('angular-ui-router');
 const ngFileUpload = require('ng-file-upload');
 
 // create angular module
-const app = angular.module([ngTouch, ngAnimate, uiRouter, ngFileUpload]);
+const app = angular.module(camelcase(__TITLE__), [ngTouch, ngAnimate, uiRouter, ngFileUpload]);
 
 // set up $rootScope globals
 app.run(['$rootScope', function($rootScope){
@@ -34,7 +34,6 @@ context.keys().forEach( key => {
 // load services
 context = require.context('./services/', true, /.js$/);
 context.keys().forEach( key => {
-  console.log('reaching services');
   let name = camelcase(path.basename(key, '.js'));
   let module = context(key);
   app.service(name, module);
@@ -55,3 +54,5 @@ context.keys().forEach( key => {
   let module = context(key);
   app.component(name, module);
 });
+
+angular.bootstrap(document, [camelcase(__TITLE__)]);
