@@ -1,7 +1,7 @@
 'use strict';
 
 // build sass
-// require('./scss/main.scss');
+require('./scss/main.scss');
 
 // require node modules
 const path = require('path');
@@ -17,15 +17,8 @@ const ngAnimate = require('angular-animate');
 const uiRouter = require('angular-ui-router');
 const ngFileUpload = require('ng-file-upload');
 
-// const engagementApp = angular.module('engagementApp', [require('angular-route')]);
-
-// require('./components')(engagementApp);
-// require('./view')(engagementApp);
-// require('./services')(engagementApp);
-
-
 // create angular module
-const app = angular.module(camelcase(__TITLE__), [ngTouch, ngAnimate, uiRouter, ngFileUpload]);
+const app = angular.module([ngTouch, ngAnimate, uiRouter, ngFileUpload]);
 
 // set up $rootScope globals
 app.run(['$rootScope', function($rootScope){
@@ -33,19 +26,15 @@ app.run(['$rootScope', function($rootScope){
 }]);
 
 // load configuration
-// let context = require.context('./config/', true, /.js$/);
-// context.keys().forEach( path => {
-//   app.config(context(path));
-// });
-
 let context = require.context('./config/', true, /.js$/);
-context.keys().forEach( path => {
-  app.config(context(path));
+context.keys().forEach( key => {
+  app.config(context(key));
 });
 
 // load services
 context = require.context('./services/', true, /.js$/);
 context.keys().forEach( key => {
+  console.log('reaching services');
   let name = camelcase(path.basename(key, '.js'));
   let module = context(key);
   app.service(name, module);

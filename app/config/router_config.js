@@ -2,14 +2,16 @@
 
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
-function routerConfig($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.when('' , '');
+function routerConfig($stateProvider){
+  // $urlRouterProvider.when('' , '');
 
-  let states = [
+  let routes = [
     {
       name: 'landing',
       url: '/',
       template: require('../view/landing/landing.html'),
+      controller: 'LandingController',
+      controllerAs: 'landingCtrl',
     },
     {
       name: 'dashboard',
@@ -18,7 +20,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     },
   ];
 
-  states.forEach(state => {
-    $stateProvider.state(state);
+  routes.forEach(route => {
+    $stateProvider.state(route);
   });
 }

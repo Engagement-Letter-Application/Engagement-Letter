@@ -17,5 +17,5 @@ function LoginController($log, $rootScope, $location, authService){
     .then(() => {
       $location.path('/dashboard');
     });
-  };
-};
+  }
+}
