@@ -1,6 +1,6 @@
 'use strict';
 
-require('./_navbar.scss');
+// require('./_navbar.scss');
 
 module.exports = {
   template: require('./navbar.html'),
@@ -37,8 +37,8 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
 
     authService.getToken()
       .then(() => {
-        if(path === '/#' || path === '/login'){
-          $location.url('/#');
+        if(path === '/' || path === '/login'){
+          $location.url('/');
         }
         this.hideLogin = true;
         this.hideLogout = false;
@@ -54,7 +54,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
             });
         }
         if (path !== '/login' ){
-          $location.url('/landing');
+          $location.url('/');
         }
       });
   }

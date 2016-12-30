@@ -28,7 +28,7 @@ const PORT = process.env.PORT;
 const app = express();
 
 // app routes
-// app.use(express.static(`${__dirname}/build`));
+app.use(express.static(`${__dirname}/build`));
 app.use(bodyParser);
 app.use(authRouter);
 app.use(dashboardRouter);
