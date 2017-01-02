@@ -1,6 +1,6 @@
 'use strict';
 
-require('./_dashboard.scss');
+// require('./_dashboard.scss');
 
 module.exports = ['$log', '$q', '$http', 'dashboardService', DashboardController];
 

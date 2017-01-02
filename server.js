@@ -24,11 +24,11 @@ mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI);
 
 // module constants
-const PORT = process.env.PORT;
 const app = express();
+const PORT = process.env.PORT;
 
 // app routes
-// app.use(express.static(`${__dirname}/build`));
+app.use(express.static(`${__dirname}/build`));
 app.use(bodyParser);
 app.use(authRouter);
 app.use(dashboardRouter);
