@@ -3,7 +3,7 @@
 require('dotenv').load();
 
 if(process.env.NODE_ENV === 'test'){
-  require('./backend-test/lib/test-env.js');
+  require('./test/back_end/test-env.js');
 }
 
 if (!process.env.API_URL || !process.env.NODE_ENV || !process.env.TITLE){

@@ -9,7 +9,7 @@ const Promise = require('bluebird');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser').json();
 
-const debug = require('debug')('abba:server');
+const debug = require('debug')('EngagementLetter:server');
 
 // app modules
 const authRouter = require('./routes/auth_router.js');
