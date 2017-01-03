@@ -7,5 +7,5 @@ process.env.TITLE='EngagementLetter test';
 process.env.API_URL='http://localhost:3000';
 process.env.NODE_ENV='test';
 process.env.MONGODB_URI='mongodb://localhost/EngagementLetter';
-process.env.GOOGLE_CLIENT_ID='fakeingagoogleclientid';
-process.env.GOOGLE_CLIENT_SECRET='fake secret for google';
+// process.env.GOOGLE_CLIENT_ID='fakeingagoogleclientid';
+// process.env.GOOGLE_CLIENT_SECRET='fake secret for google';
