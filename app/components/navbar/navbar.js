@@ -1,6 +1,6 @@
 'use strict';
 
-// require('./_navbar.scss');
+require('./_navbar.scss');
 
 module.exports = {
   template: require('./navbar.html'),
@@ -19,17 +19,17 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
     console.log('pageLoadHandler is running');
     let path = $location.path();
 
-    if (path !== '/#') {
+    if (path !== '/landing') {
       this.hideLogout = false;
       this.hideLogin = true;
     }
 
-    if (path === '/#' ) {
+    if (path === '/landing' ) {
       this.hideLogout = true;
       this.hideLogin = false;
     }
 
-    if (path === '/#'){
+    if (path === '/auth'){
       this.hideLogout = true;
       this.hideLogin = true;
     }
@@ -37,7 +37,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
 
     authService.getToken()
       .then(() => {
-        if(path === '/' || path === '/login'){
+        if(path === '/' || path === '/auth'){
           $location.url('/');
         }
         this.hideLogin = true;
@@ -53,7 +53,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
               this.hideLogout = false;
             });
         }
-        if (path !== '/login' ){
+        if (path !== '/auth' ){
           $location.url('/');
         }
       });
@@ -66,7 +66,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
     this.hideLogout = true;
     this.hideLogin = true;
 
-    $location.url('/login');
+    $location.url('/auth');
   };
 
   this.logout = function() {
